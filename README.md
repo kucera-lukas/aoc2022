@@ -1,24 +1,41 @@
-advent of code 2022
-===================
+# aoc2022
 
-https://adventofcode.com/2022
+My solutions to [Advent of Code 2022](https://adventofcode.com/2022)
 
-### stream / youtube
+## Installation
 
-- [Streamed daily on twitch](https://twitch.tv/anthonywritescode)
-- [Streams uploaded to youtube afterwards](https://www.youtube.com/@anthonywritescode-vods)
+1. make .activate.sh work in your shell
+2. setup python environment
 
-### about
+```shell
+# create venv
+virtualenv venv
 
-for 2022, I'm planning to implement in python
-
-### timing
-
-- comparing to these numbers isn't necessarily useful
-- normalize your timing to day 1 part 1 and compare
-- alternate implementations are listed in parens
-- these timings are very non-scientific (sample size 1)
-
-```console
-$ find -maxdepth 1 -type d -name 'day*' -not -name day00 | sort | xargs --replace bash -xc 'python {}/part1.py {}/input.txt; python {}/part2.py {}/input.txt'
+# install requirements
+pip install -r requirements.txt
 ```
+
+## Usage
+
+- solve each day in the correct directory
+- `cp -r day00 $DAY` - create directory for a new problem
+- `aoc-download-input` - download the input into `$DAY/input.txt`
+- implement solution in the `compute` function
+- `pytest part1.py` - run part1 tests
+- `python part1.py input.txt` - run the part1 script directly
+- `python part1.py input.txt | aoc-submit --part 1` - submit answer for part1
+- `cp part1.py part2.py` - copy part1 script into part2
+
+## Contributing
+
+```shell
+pre-commit install
+```
+
+## Credits
+
+Inspired by https://github.com/anthonywritescode/aoc2022 and https://youtu.be/CZZLCeRya74
+
+## License
+
+Developed under the [MIT](https://github.com/kucera-lukas/aoc2022/blob/master/LICENSE) license.
