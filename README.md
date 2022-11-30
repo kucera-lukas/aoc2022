@@ -6,8 +6,7 @@ My solutions to [Advent of Code 2022](https://adventofcode.com/2022)
 
 ## Installation
 
-1. make .activate.sh work in your shell
-2. setup python environment
+1. Setup python environment
 
 ```shell
 # create venv
@@ -17,11 +16,16 @@ virtualenv venv
 pip install -r requirements.txt
 ```
 
-3. Fill environment variables into .env file
+2. Copy and fill environment variables into .env file
 
 ```shell
 cp .env.sample .env
 ```
+
+### Dependencies
+
+I'm using https://github.com/direnv/direnv to automatically drop me into the
+Python virtual environment
 
 ## Usage
 
