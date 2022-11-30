@@ -17,6 +17,12 @@ virtualenv venv
 pip install -r requirements.txt
 ```
 
+3. Fill environment variables into .env file
+
+```shell
+cp .env.sample .env
+```
+
 ## Usage
 
 - solve each day in the correct directory
