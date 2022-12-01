@@ -11,21 +11,35 @@ INPUT_TXT = os.path.join(os.path.dirname(__file__), 'input.txt')
 
 
 def compute(s: str) -> int:
-    numbers = support.parse_numbers_split(s)
-    for n in numbers:
-        pass
+    elves = s.strip().split('\n\n')
 
-    lines = s.splitlines()
-    for line in lines:
-        pass
-    # TODO: implement solution here!
-    return 0
+    calories_per_elf = []
+
+    for elf in elves:
+        items = [num.strip() for num in elf.split('\n') if num != '']
+
+        calories_per_elf.append(sum(map(int, items)))
+
+    return max(calories_per_elf)
 
 
 INPUT_S = '''\
+1000
+2000
+3000
 
+4000
+
+5000
+6000
+
+7000
+8000
+9000
+
+10000
 '''
-EXPECTED = 1
+EXPECTED = 24000
 
 
 @pytest.mark.parametrize(
