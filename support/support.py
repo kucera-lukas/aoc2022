@@ -35,7 +35,15 @@ def timing(name: str = '') -> Generator[None, None, None]:
 def _get_cookie_headers() -> dict[str, str]:
     with open(os.path.join(HERE, '../.env')) as f:
         contents = f.read().strip()
-    return {'Cookie': contents}
+    return {
+        'Cookie': contents,
+        'User-Agent': (
+            'Python; '
+            'https://github.com/kucera-lukas/aoc2022; '
+            'lukaskucera.com'
+        ),
+        'From': 'lukaskucera.com',
+    }
 
 
 def get_input(year: int, day: int) -> str:
