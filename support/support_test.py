@@ -44,6 +44,46 @@ def test_parse_numbers_comma() -> None:
     assert support.parse_numbers_comma('1,2,3\n') == [1, 2, 3]
 
 
+def test_parse_numbers_all() -> None:
+    assert support.parse_numbers_all('1---2---3') == [1, 2, 3]
+    assert support.parse_numbers_all('1---2---3\n') == [1, 2, 3]
+
+    assert support.parse_numbers_all('100<>200<>300') == [100, 200, 300]
+    assert support.parse_numbers_all('100<>200<>300\n') == [100, 200, 300]
+
+    assert support.parse_numbers_all(
+        '1!22@333$4444%55555^666666&7777777*88888888(999999999',
+    ) == [1, 22, 333, 4444, 55555, 666666, 7777777, 88888888, 999999999]
+    assert support.parse_numbers_all(
+        '1!22@333$4444%55555^666666&7777777*88888888(999999999\n',
+    ) == [1, 22, 333, 4444, 55555, 666666, 7777777, 88888888, 999999999]
+
+    assert support.parse_numbers_all('[1][2][3]') == [1, 2, 3]
+    assert support.parse_numbers_all('[1][2][3]\n') == [1, 2, 3]
+
+
+def test_parse_characters_all() -> None:
+    assert support.parse_characters_all('a---b---c') == ['a', 'b', 'c']
+    assert support.parse_characters_all('a---b---c\n') == ['a', 'b', 'c']
+
+    assert support.parse_characters_all('abc<>def<>ghi') == [
+        'abc', 'def', 'ghi',
+    ]
+    assert support.parse_characters_all('abc<>def<>ghi\n') == [
+        'abc', 'def', 'ghi',
+    ]
+
+    assert support.parse_characters_all(
+        'a!b@c$d%e^f&g*h(i',
+    ) == ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
+    assert support.parse_characters_all(
+        'a!b@c$d%e^f&g*h(i\n',
+    ) == ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
+
+    assert support.parse_characters_all('[a][b][c]') == ['a', 'b', 'c']
+    assert support.parse_characters_all('[a][b][c]\n') == ['a', 'b', 'c']
+
+
 def test_format_coords_hash() -> None:
     assert support.format_coords_hash({(1, 0), (0, 1)}) == ' #\n# '
 

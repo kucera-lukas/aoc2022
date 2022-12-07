@@ -101,7 +101,7 @@ RIGHT = "That's the right answer!"
 ALREADY_DONE = re.compile(r"You don't seem to be solving.*\?")
 
 
-def _post_answer(year: int, day: int, part: int, answer: int) -> str:
+def _post_answer(year: int, day: int, part: int, answer: int | str) -> str:
     params = urllib.parse.urlencode({'level': part, 'answer': answer})
     req = urllib.request.Request(
         f'https://adventofcode.com/{year}/day/{day}/answer',
@@ -120,7 +120,7 @@ def submit_solution() -> int:
     args = parser.parse_args()
 
     year, day = get_year_day()
-    answer = int(sys.stdin.read())
+    answer = sys.stdin.read()
 
     print(f'answer: {answer}')
 
@@ -196,6 +196,14 @@ def parse_numbers_split(s: str) -> list[int]:
 
 def parse_numbers_comma(s: str) -> list[int]:
     return [int(x) for x in s.strip().split(',')]
+
+
+def parse_numbers_all(s: str) -> list[int]:
+    return [int(x) for x in re.findall(r'\d+', s)]
+
+
+def parse_characters_all(s: str) -> list[str]:
+    return re.findall(r'[a-zA-Z]+', s)
 
 
 def format_coords_hash(coords: set[tuple[int, int]]) -> str:
