@@ -26,7 +26,7 @@ def compute(s: str) -> str:
         move, from_, to = support.parse_numbers_all(line)
 
         moved_crates = [stacks[from_ - 1].pop() for _ in range(move)]
-        stacks[to - 1].extend(moved_crates)
+        stacks[to - 1].extend(reversed(moved_crates))
 
     return ''.join(stack[-1] for stack in stacks if stack)
 
@@ -42,7 +42,7 @@ move 3 from 1 to 3
 move 2 from 2 to 1
 move 1 from 1 to 2
 '''
-EXPECTED = 'CMZ'
+EXPECTED = 'MCD'
 
 
 @pytest.mark.parametrize(
