@@ -198,8 +198,12 @@ def parse_numbers_comma(s: str) -> list[int]:
     return [int(x) for x in s.strip().split(',')]
 
 
-def parse_numbers_all(s: str) -> list[int]:
-    return [int(x) for x in re.findall(r'\d+', s)]
+def parse_numbers_all(s: str, *, minus: bool = False) -> list[int]:
+    pattern = r'\d+'
+    if minus:
+        pattern = f'-?{pattern}'
+
+    return [int(x) for x in re.findall(pattern, s)]
 
 
 def parse_characters_all(s: str) -> list[str]:

@@ -62,6 +62,36 @@ def test_parse_numbers_all() -> None:
     assert support.parse_numbers_all('[1][2][3]\n') == [1, 2, 3]
 
 
+def test_parse_numbers_all_minus() -> None:
+    assert support.parse_numbers_all('1---2---3', minus=True) == [1, -2, -3]
+    assert support.parse_numbers_all('1---2---3\n', minus=True) == [1, -2, -3]
+
+    assert support.parse_numbers_all(
+        '-100<>200<>300', minus=True,
+    ) == [-100, 200, 300]
+    assert support.parse_numbers_all(
+        '100<>200<>300\n', minus=True,
+    ) == [100, 200, 300]
+
+    assert support.parse_numbers_all(
+        '-1-22-333-4444-55555-666666-7777777-8888888-99999999',
+        minus=True,
+    ) == (
+        [-1, -22, -333, -4444, - 55555, -666666, -7777777, -8888888, -99999999]
+    )
+    assert support.parse_numbers_all(
+        '-1-22-333-4444-55555-666666-7777777-8888888-99999999\n',
+        minus=True,
+    ) == (
+        [-1, -22, -333, -4444, - 55555, -666666, -7777777, -8888888, -99999999]
+    )
+
+    assert support.parse_numbers_all('-[1]-[2]-[3]-', minus=True) == [1, 2, 3]
+    assert support.parse_numbers_all(
+        '-[1]-[2]-[3]-\n', minus=True,
+    ) == [1, 2, 3]
+
+
 def test_parse_characters_all() -> None:
     assert support.parse_characters_all('a---b---c') == ['a', 'b', 'c']
     assert support.parse_characters_all('a---b---c\n') == ['a', 'b', 'c']
