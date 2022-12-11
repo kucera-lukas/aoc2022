@@ -1,5 +1,6 @@
 # aoc2022
 
+[![Continuous Integration](https://github.com/kucera-lukas/aoc2022/actions/workflows/ci.yml/badge.svg)](https://github.com/kucera-lukas/aoc2022/actions/workflows/ci.yml)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/kucera-lukas/aoc2022/main.svg)](https://results.pre-commit.ci/latest/github/kucera-lukas/aoc2022/main)
 
 My solutions to [Advent of Code 2022](https://adventofcode.com/2022)
