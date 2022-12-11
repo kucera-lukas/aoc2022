@@ -2,12 +2,19 @@ from __future__ import annotations
 
 import argparse
 import os.path
+import sys
+from functools import partial
 
 import pytest
 
 import support
 
 INPUT_TXT = os.path.join(os.path.dirname(__file__), 'input.txt')
+
+# Answer is read via stdin when submitting. To avoid
+# accidentally reading a value from a debugging print
+# let's re-assign 'print' to always write to stderr.
+print = partial(print, file=sys.stderr, flush=True)
 
 
 def compute(s: str) -> int:
