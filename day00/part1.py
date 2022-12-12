@@ -51,7 +51,8 @@ def main() -> int:
     args = parser.parse_args()
 
     with open(args.data_file) as f, support.timing():
-        print(compute(f.read()))
+        # Make sure answer goes to stdout
+        print(compute(f.read()), file=sys.stdout)
 
     return 0
 
