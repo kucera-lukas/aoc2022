@@ -210,6 +210,10 @@ def parse_characters_all(s: str) -> list[str]:
     return re.findall(r'[a-zA-Z]+', s)
 
 
+def parse_characters_upper(s: str) -> list[str]:
+    return re.findall(r'[A-Z]+', s)
+
+
 def format_coords_hash(coords: set[tuple[int, int]]) -> str:
     min_x = min(x for x, _ in coords)
     max_x = max(x for x, _ in coords)
